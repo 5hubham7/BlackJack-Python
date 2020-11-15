@@ -1,0 +1,56 @@
+WindowManager:
+    WelcomeWindow:
+    BetWindow:
+    GameWindow:
+
+
+
+<WelcomeWindow>:
+    name:"Welcome"
+    GridLayout:
+        cols:1
+
+        Label:
+            text:"- RULES -"
+            font_size:20
+            color:(0,1,1,1)
+
+        TextInput:
+            text:"STAND - means Not ask for another card. HIT - means Ask for another card in an attempt to get closer to a count/sum of 21, or even hit 21 exactly. BUST - If sum is over 21. The player goes first and must decide whether to STAND or HIT. Thus, a player may STAND on the two cards originally dealt to them, OR they may ask the dealer for additional cards, one at a time, until deciding to STAND on the total (if it is 21 or under), OR goes BUST. Player can count the ace as a 1 or 11, If the draw creates a BUST hand by counting the ace as an 11, then player simply counts the ace as a 1 and continues playing by STANDING or HITTING."
+            font_size:20
+
+        Button:
+            text:"START"
+            font_size:20
+            background_color:(0,1,1,1)
+            on_release:
+                app.root.current="Bet"
+
+
+<BetWindow>:
+
+    name:"Bet"
+    GridLayout:
+        cols:1
+        Label:
+            text:"Enter the number of coins you wanna bet: You have 100 coins!"
+            font_size:20
+            color:(0,1,1,1)
+
+
+        TextInput:
+            id:BetTextInput
+            multiline:False
+            font_size:40
+
+        Button:
+            text:"BET"
+            on_release:
+                app.root.current="Game" if BetTextInput.text<="100" and BetTextInput.text>"0" else "Bet"
+            font_size:20
+            background_color:(0,1,1,1)
+
+
+
+<GameWindow>:
+    name:"Game"
